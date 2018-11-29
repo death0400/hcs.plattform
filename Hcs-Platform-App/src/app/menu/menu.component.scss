@@ -1,0 +1,32 @@
+@import '../../colors.scss';
+.folder {
+    border-left-style: solid;
+    border-left-width: 6px;
+}
+
+:host {
+    display: block;
+}
+
+mat-list-item,
+[mat-list-item] {
+    min-width: 220px;
+}
+
+.right {
+    margin-left: auto;
+}
+
+:host {
+    .active-link {
+        color: $app-primary-color;
+        .active-icon {
+            display: inline;
+        }
+    }
+}
+
+.active-icon {
+    display: none;
+    margin-left: auto;
+}

@@ -1,0 +1,4 @@
+<hcs-copy-button [queryParams]="queryParams" *ngIf="permission.hasPermission('Create')" [key]="key"></hcs-copy-button>
+<hcs-edit-button [queryParams]="queryParams" *ngIf="permission.hasPermission('Modify')" [key]="key"></hcs-edit-button>
+<hcs-delete-button *ngIf="permission.hasPermission('Delete')" [datasource]="data" [key]="key"></hcs-delete-button>
+<ng-content></ng-content>

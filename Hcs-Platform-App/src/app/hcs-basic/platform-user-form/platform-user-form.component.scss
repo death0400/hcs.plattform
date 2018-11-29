@@ -1,0 +1,14 @@
+hcs-fieldset {
+    display: flex;
+    flex-direction: column;
+    .groups {
+        margin: 10px;
+        flex: 1 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        mat-checkbox {
+            margin-right: 10px;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<hcs-form-page #fp *ngIf="formGroup" [formGroup]="formGroup" [backToView]="true" [dataSource]="datasource" [fieldI18nPrefix]="'models.BaseModels.PlatformUser'">
+  <hcs-form-row>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformGroup.Name</mat-label>
+      <input matInput formControlName="Name" required>
+      <mat-error *ngIf="formGroup.get('Name')?.invalid">{{formGroup.get('Name').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+  </hcs-form-row>
+  <hcs-form-row>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformGroup.IsEnabled</mat-label>
+      <mat-select [placeholder]="'common.pleaseSelect'|translate" formControlName="IsEnabled">
+        <mat-option [value]="null"></mat-option>
+        <mat-option [value]="true">{{'common.true'|translate}}</mat-option>
+        <mat-option [value]="false">{{'common.false'|translate}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formGroup.get('IsEnabled')?.invalid">{{formGroup.get('IsEnabled').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+  </hcs-form-row>
+  <hcs-form-row *ngIf="permissionDataSource" style="flex:1">
+    <hcs-data-grid [data]="permissionDataSource" [autoLoad]="true" [shadow]="false" [minWidth]="false" [showFooter]="false">
+      <div grid-head class="flex-row permission-grid-header">
+        <h4 translate>component.platform-group.permission</h4>
+        <div class="buttons flex-row">
+          <button mat-raised-button color="primary" *ngIf="formPage.state=='edit' && !formPage.isReadonly" (click)="savePermission()"
+            [disabled]="!permissionGroup.touched">{{'component.platform-group.savePermission'|translate}}</button>
+        </div>
+      </div>
+      <ng-container *hcsDataGridColum="let value;field:'Code';name:'models.PlatformModel.PlatformFunction.Code'|translate;sortable:false;">
+        {{'functions.'+value|translate}}
+      </ng-container>
+      <ng-container *hcsDataGridColum="let value;let entity=entity;field:'Permissions';name:'models.PlatformModel.PlatformFunction.Permissions'|translate;sortable:false;cellClass:'flex-column permission-cell'">
+        <ng-container *ngFor="let p of value;let last=last">
+          <div class="permission-setting flex-row">
+            <label translate>permissions.{{p}}</label>
+            <mat-radio-group [formControl]="getControl(entity.Code+'.'+p)">
+              <mat-radio-button [value]="-1">{{'enums.PermissionStatus.-1'|translate}}</mat-radio-button>
+              <mat-radio-button [value]="0">{{'enums.PermissionStatus.0'|translate}}</mat-radio-button>
+              <mat-radio-button [value]="1">{{'enums.PermissionStatus.1'|translate}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-divider *ngIf="!last"></mat-divider>
+        </ng-container>
+      </ng-container>
+    </hcs-data-grid>
+  </hcs-form-row>
+</hcs-form-page>

@@ -1,0 +1,168 @@
+@import './colors.scss';
+/* 修正粗體 */
+
+@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
+@include mat-datetimepicker-theme($app-theme);
+
+@include angular-material-theme($app-theme);
+.mat-form-field-appearance-legacy {
+    .mat-form-field-label {
+        color: rgba($color: (#000000), $alpha: .9);
+    }
+    .mat-form-field-required-marker {
+        color: $app-warn-color;
+    }
+}
+
+.auto-border-color {
+    border-color: $underline-color;
+}
+
+.auto-border-color-table {
+    border-color: #999;
+    td,
+    th {
+        border-color: #999;
+    }
+}
+
+.underline {
+    border-bottom: 1px solid $underline-color;
+}
+
+.googleChart text {
+    fill: $app-color;
+}
+
+.dark-theme {
+    @include angular-material-theme($app-dark-theme);
+    color: $app-dark-color;
+    .googleChart text {
+        fill: $app-dark-color;
+    }
+    .googleChart rect[fill="#333333"] {
+        fill: $underline-dark-color;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+        color: $app-dark-color;
+    }
+    .auto-border-color {
+        border-color: $underline-dark-color;
+    }
+    .auto-border-color-table {
+        border-color: #eee;
+        td,
+        th {
+            border-color: #eee;
+        }
+    }
+    .mat-input-element,
+    .mat-drawer-container,
+    .mat-nav-list .mat-list-item,
+    .mat-selection-list .mat-list-item {
+        color: $app-dark-color;
+    }
+    .underline {
+        border-bottom: 1px solid $underline-color;
+    }
+}
+
+.auto-shadow {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.auto-bgcolor {
+    background-color: $app-background-color;
+}
+
+.auto-mask-color {
+    background-color: rgba($color: #000000, $alpha: .1);
+}
+
+.dark-theme {
+    .auto-bgcolor {
+        background-color: $app-dark-background-color;
+    }
+    .auto-mask-color {
+        background-color: rgba($color: #ffffff, $alpha: .1);
+    }
+    .auto-shadow {
+        box-shadow: 0 3px 1px -2px rgba(255, 255, 255, 0.2), 0 2px 2px 0 rgba(255, 255, 255, 0.14), 0 1px 5px 0 rgba(255, 255, 255, 0.12);
+    }
+}
+
+a {
+    color: $app-primary-color;
+}
+
+* {
+    font-family: $site-font;
+    font-weight: $site-weight;
+}
+
+body {
+    margin: 0;
+    background-color: $app-background-color;
+    &.dark-theme {
+        background-color: $app-dark-background-color;
+    }
+}
+
+.mat-select-disabled .mat-select-value,
+.mat-input-element:disabled,
+.mat-radio-disabled .mat-radio-label-content {
+    color: inherit;
+}
+
+mat-radio-group {
+    mat-radio-button.mat-radio-disabled {
+        .mat-radio-container {
+            display: none;
+        }
+        &:not(.mat-radio-checked) {
+            display: none;
+        }
+    }
+}
+
+.mat-form-field {
+    .mat-select {
+        margin-top: 6px;
+    }
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.hcs-table {
+    display: flex;
+    flex-direction: column;
+    .hcs-table-row {
+        flex: 1 0;
+        display: flex;
+        flex-direction: row;
+        >div {
+            &.hcs-table-column {
+                font-weight: 600;
+            }
+            flex: 1 0;
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+input[type="number"] {
+    text-align: right;
+}
+
+.number {
+    text-align: right;
+}

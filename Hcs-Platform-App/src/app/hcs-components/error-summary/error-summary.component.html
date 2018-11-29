@@ -1,0 +1,9 @@
+<ng-container *ngIf="errors.hasError">
+  <div class="errors mat-error" *ngIf="errors.hasError">
+    <div class=" error-item " *ngFor="let err of errors.errors">
+      <mat-icon>error</mat-icon>
+      <div class="field ">{{err.field|translate}} {{err.message|errorMessage}}</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</ng-container>

@@ -1,0 +1,16 @@
+<hcs-card-form class="login-card" [title]="'app-title'|translate">
+
+  <form (ngSubmit)="form.valid?login():null" #form="ngForm">
+    <mat-form-field>
+      <input matInput [(ngModel)]="account" name="account" autocomplete="username" required [placeholder]="'component.login.account'|translate">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="password" name="password" autocomplete="current-password" required type="password" [placeholder]="'component.login.password'|translate">
+    </mat-form-field>
+    <span class="errors">
+      <span *ngIf="errorMessage">{{'component.login.error.'+errorMessage|translate}}</span>&nbsp;
+    </span>
+    <button mat-raised-button color="primary" type="submit" [textContent]="'component.login.login'|translate"></button>
+  </form>
+</hcs-card-form>

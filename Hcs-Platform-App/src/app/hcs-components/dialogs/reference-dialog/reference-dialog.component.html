@@ -1,0 +1,60 @@
+<mat-dialog-content>
+  <hcs-list-page *ngIf="show">
+    <hcs-data-grid [data]="data.datasource" #grid [autoLoad]="true" [defaultSortState]="data.sortState">
+      <ng-container grid-head [formGroup]="filterForm">
+        <!--grid filters-->
+        <mat-form-field *ngFor="let f of data.filters">
+          <mat-label>{{f.name|translate}}</mat-label>
+          <input matInput [formControlName]="f.field" hcsDataGridQuery [operator]="f.operator" *ngIf="!f.type" />
+          <mat-select [formControlName]="f.field" hcsDataGridQuery [operator]="f.operator" *ngIf="f.type=='enum' && f.data">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of f.data | enumOptions" [value]="item.text">{{item.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="buttons">
+          <hcs-search-button (click)="pager.page=1;grid.queueLoad();"></hcs-search-button>
+        </div>
+      </ng-container>
+      <!--grid columns-->
+      <ng-container *hcsDataGridColum="let value;field:data.datasource.identityProperty;name:'';width:60;align:'center';sortable:false">
+        <button mat-icon-button [mat-dialog-close]="value" color="primary">
+          <mat-icon>check</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *hcsDataGridColum="let i=index;width:30;align:'center';name:'#'">
+        <span [textContent]="pager.getSerialNumber(i)"></span>
+      </ng-container>
+      <ng-container *ngFor="let c of data.columns">
+        <ng-container *ngIf="!c.type">
+          <ng-container *hcsDataGridColum="let value;let entity=entity;field:c.field;name:c.name|translate">
+            {{value}}
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="c.type=='id'">
+          <ng-container *hcsDataGridColum="let value;let entity=entity;field:c.field;name:c.name|translate;align:'center'">
+            {{value|paddingLeft:6:'0'}}
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="c.type=='date'">
+          <ng-container *hcsDataGridColum="let value;let entity=entity;field:c.field;name:c.name|translate">
+            {{value|localDate:'yyyy/MM/dd'}}
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="c.type=='enum' && c.data">
+          <ng-container *hcsDataGridColum="let value;let entity=entity;field:c.field;name:c.name|translate">
+            {{c.data[value]}}
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="c.type=='image'">
+          <ng-container *hcsDataGridColum="let value;let entity=entity;field:c.field;name:c.name|translate">
+            <hcs-file [value]="value" layout="preview" [accept]="'image/*'" previewSize="xs" disabled="true"></hcs-file>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <hcs-pager #pager grid-foot></hcs-pager>
+    </hcs-data-grid>
+  </hcs-list-page>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="undefined">{{'dialog.reference.cancel'|translate}}</button>
+</mat-dialog-actions>

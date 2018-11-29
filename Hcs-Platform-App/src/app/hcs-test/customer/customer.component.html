@@ -1,0 +1,28 @@
+<hcs-list-page>
+  <hcs-data-grid [enableRowSelect]="true" [data]="data" #grid [autoLoad]="true" [defaultSortState]="[{field:'Name',direction:'asc'}]">
+    <ng-container grid-head [formGroup]="filterForm">
+      <!--grid filters-->
+      <mat-form-field>
+        <mat-label translate>models.PlatformModule.Test.Customer.Name</mat-label>
+        <input matInput formControlName="Name" hcsDataGridQuery operator="contains" />
+      </mat-form-field>
+      <div class="buttons">
+        <hcs-default-button-search-bar [grid]="grid" [filterForm]="filterForm"></hcs-default-button-search-bar>
+      </div>
+    </ng-container>
+    <!--grid columns-->
+    <ng-container *hcsDataGridColum="let i=index;width:30;align:'center';name:'#'">
+      <span [textContent]="pager.getSerialNumber(i)"></span>
+    </ng-container>
+    <ng-container *hcsDataGridColum="let value;let entity=entity;field:'Name';export:true,name:'models.PlatformModule.Test.Customer.Name'|translate">
+      <a [routerLink]="[entity.Id]" queryParamsHandling="merge">{{value}}</a>
+    </ng-container>
+    <ng-container *hcsDataGridColum="let value;let entity=entity;field:'CreatedByUser.Name';export:true,name:'models.PlatformModule.Test.Customer.Name'|translate">
+      {{value}}
+    </ng-container>
+    <ng-container *hcsDataGridColum="let value;field:'Id';name:'';sortable:false">
+      <hcs-default-button-list [data]="data" [key]="value"></hcs-default-button-list>
+    </ng-container>
+    <hcs-pager #pager grid-foot></hcs-pager>
+  </hcs-data-grid>
+</hcs-list-page>

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.8.1</Version>
+    <Authors>HsinYu Chen</Authors>
+    <Company>Hardcore Software</Company>
+    <Product>Hardcore Software Platform</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.0" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hcs.Expressions\Hcs.Expressions.csproj" />
+    <ProjectReference Include="..\Hcs.Platform.Flow\Hcs.Platform.Flow.csproj" />
+    <ProjectReference Include="..\Hcs.Platform.Abstractions\Hcs.Platform.Abstractions.csproj" />
+    <ProjectReference Include="..\Hcs.Extensions.Type\Hcs.Extensions.Type.csproj" />
+    <ProjectReference Include="..\Hcs.Platform.BaseModels\Hcs.Platform.BaseModels.csproj" />
+    <ProjectReference Include="..\Hcs.Encryption\Hcs.Encryption.csproj" />
+    <ProjectReference Include="..\Hcs.Extensions.EntityFrameworkCore\Hcs.Extensions.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Hcs.Extensions.Collections\Hcs.Extensions.Collections.csproj" />
+    <ProjectReference Include="..\Hcs.Serialize.Xlsx\Hcs.Serialize.Xlsx.csproj" />
+  </ItemGroup>
+</Project>

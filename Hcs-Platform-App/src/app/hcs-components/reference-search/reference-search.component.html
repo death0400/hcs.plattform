@@ -1,0 +1,5 @@
+<mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true" (optionSelected)="selected($event)">
+  <ng-container *ngIf="optionSource">
+    <mat-option [value]="item[settings.datasource.identityProperty]" *ngFor="let item of (optionSource|async)?.data">{{format(item)}}</mat-option>
+  </ng-container>
+</mat-autocomplete>

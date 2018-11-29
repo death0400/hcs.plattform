@@ -1,0 +1,52 @@
+<hcs-form-page [formGroup]="formGroup" [dataSource]="datasource" [modelPostprocess]="post()" [fieldI18nPrefix]="'models.BaseModels.PlatformUser'">
+  <hcs-form-row>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformUser.Name</mat-label>
+      <input matInput formControlName="Name" autocomplete="name" required>
+      <mat-error *ngIf="formGroup.get('Name')?.invalid">{{formGroup.get('Name').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformUser.Account</mat-label>
+      <input matInput formControlName="Account" autocomplete="username" required autocomplete="new-password">
+      <mat-error *ngIf="formGroup.get('Account')?.invalid">{{formGroup.get('Account').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+  </hcs-form-row>
+  <hcs-form-row>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformUser.Password</mat-label>
+      <input matInput type="password" formControlName="Password" autocomplete="new-password">
+      <mat-error *ngIf="formGroup.get('Password')?.invalid">{{formGroup.get('Password').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformUser.ConfirmPassword</mat-label>
+      <input matInput type="password" formControlName="ConfirmPassword" autocomplete="new-password">
+      <mat-error *ngIf="formGroup.get('ConfirmPassword')?.invalid">{{formGroup.get('ConfirmPassword').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+  </hcs-form-row>
+  <hcs-form-row>
+    <mat-form-field>
+      <mat-label translate>models.BaseModels.PlatformUser.Email</mat-label>
+      <input matInput type="text" formControlName="Email" autocomplete="email">
+      <mat-error *ngIf="formGroup.get('Email')?.invalid">{{formGroup.get('Email').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+  </hcs-form-row>
+  <hcs-form-row>
+    <hcs-form-field [label]="'models.BaseModels.PlatformUser.Status'|translate">
+      <mat-radio-group formControlName="Status">
+        <mat-radio-button [value]="-1">{{'enums.UserStatus.-1'|translate}}</mat-radio-button>
+        <mat-radio-button [value]="1">{{'enums.UserStatus.1'|translate}}</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="formGroup.get('Status')?.invalid && formGroup.get('Status').touched">{{formGroup.get('Status').errors|errorMessage}}</mat-error>
+    </hcs-form-field>
+  </hcs-form-row>
+  <hcs-form-row *ngIf="groupFormGroup && (formPage.dataId!=currentUser.id)">
+    <hcs-fieldset [legend]="'component.platform-user-form.group'|translate" [formGroup]="groupFormGroup">
+      <button *ngIf="formPage.state=='edit' && !formPage.isReadonly" mat-raised-button (click)="saveUserGroups()" color="primary">{{'component.platform-user-form.saveGroup'|translate}}</button>
+      <div class="groups">
+        <ng-container *ngFor="let g of groups;" [formGroupName]="g.Id">
+          <mat-checkbox formControlName="Checked">{{g.Name}}</mat-checkbox>
+        </ng-container>
+      </div>
+    </hcs-fieldset>
+  </hcs-form-row>
+</hcs-form-page>

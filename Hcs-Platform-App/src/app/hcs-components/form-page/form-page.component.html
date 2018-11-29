@@ -1,0 +1,19 @@
+<div class="buttons">
+    <a mat-raised-button *ngIf="isReadonly&&!isDialog&&!backToRoute" [routerLink]="['../']" queryParamsHandling="merge">{{'common.back'|translate}}</a>
+    <button mat-raised-button *ngIf="!isReadonly&&!isDialog" (click)="backList()">{{'common.back'|translate}}</button>
+    <a mat-raised-button *ngIf="!isReadonly&&!isDialog&&!backToRoute" [routerLink]="['../']" queryParamsHandling="merge">{{'common.cancel'|translate}}</a>
+    <a mat-raised-button *ngIf="isReadonly&&permission.hasPermission('Modify')&&!isDialog" [routerLink]="['edit']" queryParamsHandling="merge"
+        color="primary">{{'common.edit'|translate}}</a>
+    <a mat-raised-button *ngIf="isReadonly&&permission.hasPermission('Create')&&!isDialog" [routerLink]="['../','new',dataId]"
+        queryParamsHandling="merge" color="accent">{{'common.copy'|translate}}</a>
+    <button mat-raised-button *ngIf="!isReadonly" [disabled]="!formGroup?.touched" (click)="resetForm()">{{'common.reset'|translate}}</button>
+    <button mat-raised-button color="primary" *ngIf="!isReadonly" [disabled]="!formGroup?.touched" (click)="saveForm()">{{'common.save'|translate}}</button>
+    <ng-content select="[hcs-form-page-button]"></ng-content>
+</div>
+<mat-divider></mat-divider>
+<hcs-error-summary [errors]="errors"></hcs-error-summary>
+<form class="form-container">
+    <ng-content></ng-content>
+</form>
+<hcs-data-change-log [data]="originalModel"></hcs-data-change-log>
+<ng-content select="[hcs-form-page-foot]"></ng-content>

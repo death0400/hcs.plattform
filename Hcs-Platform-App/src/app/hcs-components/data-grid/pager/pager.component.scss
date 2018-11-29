@@ -1,0 +1,20 @@
+:host {
+    height: 50px;
+    >div {
+        padding-left: 5px;
+        padding-right: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        .right {
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+        }
+        .page-size {
+            width: 50px;
+            margin-left: 10px;
+        }
+    }
+}

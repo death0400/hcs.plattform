@@ -1,0 +1,33 @@
+:host {
+    flex: 1 1 auto;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /deep/ {
+        .head {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 5px;
+            >* {
+                margin-left: 5px;
+            }
+            .buttons {
+                margin-left: auto;
+            }
+        }
+        .head {
+            button {
+                margin: 5px;
+            }
+        }
+        hcs-data-grid {
+            flex: 1 1 auto;
+            margin: 5px;
+        }
+    }
+}

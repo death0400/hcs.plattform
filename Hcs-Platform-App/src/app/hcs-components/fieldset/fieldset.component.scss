@@ -1,0 +1,18 @@
+fieldset {
+    border-width: 1px;
+    margin: 0 0;
+    border-radius: 2px 2px;
+    min-height: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    legend {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+:host {
+    padding: 5px 10px;
+    margin: 0 2px;
+    box-sizing: border-box;
+}

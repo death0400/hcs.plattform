@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hcs.Platform.Abstractions\Hcs.Platform.Abstractions.csproj" />
+    <ProjectReference Include="..\Hcs.Platform.Core\Hcs.Platform.Core.csproj" />
+    <ProjectReference Include="..\Hcs.Extensions.EntityFrameworkCore\Hcs.Extensions.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Hcs.PlatformModule.Test.Model\Hcs.PlatformModule.Test.Model.csproj" />
+  </ItemGroup>
+</Project>

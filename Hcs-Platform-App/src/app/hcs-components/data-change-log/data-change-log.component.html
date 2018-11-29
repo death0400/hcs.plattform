@@ -1,0 +1,16 @@
+<div class="flex-column" *ngIf="data && (data?.CreatedBy||data?.CreatedTime||data?.LastUpdatedBy||data?.LastUpdatedTime)">
+  <mat-divider></mat-divider>
+  <div class="flex-row">
+    <div translate>component.data-change-log.createdBy</div>
+    <div [textContent]="cname"></div>
+    <div translate>component.data-change-log.lastUpdatedBy</div>
+    <div [textContent]="mname"></div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="flex-row">
+    <div translate>component.data-change-log.createdTime</div>
+    <div [textContent]="data?.CreatedTime|localDate"></div>
+    <div translate>component.data-change-log.lastUpdatedTime</div>
+    <div [textContent]="data?.LastUpdatedTime|localDate"></div>
+  </div>
+</div>

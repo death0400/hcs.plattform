@@ -1,0 +1,5 @@
+bin/
+obj/
+wwwroot/
+dist/
+node_modules/

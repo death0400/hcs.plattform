@@ -1,0 +1,55 @@
+<div class="head" *ngIf="showHeader" [class.mini-head]="miniHead">
+  <ng-content select="[grid-head]">
+
+  </ng-content>
+  <button mat-icon-button class="toggle-head" (click)="miniHead=!miniHead">
+    <mat-icon *ngIf="!miniHead">expand_less</mat-icon>
+    <mat-icon *ngIf="miniHead">expand_more</mat-icon>
+  </button>
+</div>
+<div class="data">
+  <div class="data-scroll">
+    <div class="grid-header auto-border-color">
+      <div class="hide-scroll auto-bgcolor auto-border-color"></div>
+      <div class="row auto-border-color">
+        <div *ngIf="data.identityProperty&&enableRowSelect" class="cell auto-border-color row-select">
+
+        </div>
+        <ng-container *ngFor="let column of columns;let ci=index">
+          <div class="cell auto-border-color" [class.hide]="!column.visible" (click)="column.sortable?clickColumn(column,$event):null;"
+            [class.sortable]="column.sortable" [class.width-spec]="column.width!==undefined&&column.width!==null" [ngStyle]="column.getStyles()"
+            [ngClass]="column.cellClass" [attr.column-name]="column.columnName" [attr.column-align]="column.align">
+            {{column.columnName||''}}
+            <div class="sort-state" *ngIf="column.sortable&&(column.field||column.orderby)&&sortingStateMap[column.orderByField||column.field]">
+              <mat-icon *ngIf="sortingStateMap[column.orderByField||column.field].direction==1">arrow_downward</mat-icon>
+              <mat-icon *ngIf="sortingStateMap[column.orderByField||column.field].direction==2">arrow_upward</mat-icon>
+              <span [textContent]="sortingStateMap[column.orderByField||column.field].order"></span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="grid-body auto-border-color">
+      <div class="body-scroll auto-border-color" *ngIf="columns.length&&loadedData">
+        <ng-container *ngFor="let d of loadedData;let i=index">
+          <div class="row auto-border-color" [ngStyle]="getRowStyle(d)" [class.auto-mask-color]="(i%2)==0">
+            <div *ngIf="data.identityProperty&&enableRowSelect" class="cell auto-border-color row-select">
+              <mat-checkbox [(ngModel)]="checkedModel[d[data.identityProperty]]"></mat-checkbox>
+            </div>
+            <ng-container *ngFor="let column of columns;let ci=index">
+              <div class="cell auto-border-color" [class.hide]="!column.visible" [class.width-spec]="column.width!==undefined&&column.width!==null"
+                [ngStyle]="column.ngStyles(d)" [ngClass]="column.cellClass" [attr.column-name]="column.columnName" [attr.column-align]="column.align">
+                <ng-container [hcsDataGridCell]="column.templateRef" [columnIndex]="ci" [context]="{$implicit:column.fieldValueGetter(d),entity:d,array:data,index:i}"></ng-container>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="foot" *ngIf="showFooter">
+  <ng-content select="[grid-foot]">
+
+  </ng-content>
+</div>

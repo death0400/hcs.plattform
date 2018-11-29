@@ -1,0 +1,45 @@
+<hcs-list-page>
+    <hcs-data-grid [data]="data" #grid [autoLoad]="true">
+        <ng-container grid-head [formGroup]="filterForm">
+            <!--grid filters-->
+            <mat-form-field>
+                <mat-label translate>models.BaseModels.PlatformUser.Name</mat-label>
+                <input matInput formControlName="Name" hcsDataGridQuery operator="contains" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label translate>models.BaseModels.PlatformUser.Account</mat-label>
+                <input matInput formControlName="Account" hcsDataGridQuery operator="contains" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label translate>models.BaseModels.PlatformUser.Email</mat-label>
+                <input matInput formControlName="Email" hcsDataGridQuery operator="contains" />
+            </mat-form-field>
+            <div class="buttons">
+                <hcs-default-button-search-bar [grid]="grid" [filterForm]="filterForm"></hcs-default-button-search-bar>
+            </div>
+        </ng-container>
+        <!--grid columns-->
+        <ng-container *hcsDataGridColum="let i=index;width:30;align:'center';name:'#'">
+            <span [textContent]="pager.getSerialNumber(i)"></span>
+        </ng-container>
+        <ng-container *hcsDataGridColum="let value;export:true;let entity=entity;field:'Name';name:'models.BaseModels.PlatformUser.Name'|translate">
+            <a [routerLink]="[entity.Id]" queryParamsHandling="merge">{{value}}</a>
+        </ng-container>
+        <ng-container *hcsDataGridColum="let value;field:'Account';name:'models.BaseModels.PlatformUser.Account'|translate">
+            {{value}}
+        </ng-container>
+        <ng-container *hcsDataGridColum="let value;export:true;field:'Email';name:'models.BaseModels.PlatformUser.Email'|translate">
+            {{value}}
+        </ng-container>
+        <ng-container *hcsDataGridColum="let value;export:true;field:'Status';name:'models.BaseModels.PlatformUser.Status'|translate;align:'center';">
+            {{'enums.UserStatus.'+value|translate}}
+        </ng-container>
+        <ng-container *hcsDataGridColum="let value;field:'Id';name:'';sortable:false">
+            <hcs-copy-button *ngIf="permission.hasPermission('Create')" [key]="value"></hcs-copy-button>
+            <hcs-edit-button *ngIf="permission.hasPermission('Modify')" [key]="value"></hcs-edit-button>
+            <hcs-delete-button *ngIf="permission.hasPermission('Delete') && (value!==currentUser.id)" [datasource]="data"
+                [key]="value"></hcs-delete-button>
+        </ng-container>
+        <hcs-pager #pager grid-foot></hcs-pager>
+    </hcs-data-grid>
+</hcs-list-page>

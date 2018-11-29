@@ -1,0 +1,3 @@
+<hcs-search-button (click)="searchClick()"></hcs-search-button>
+<hcs-export-tool-bar></hcs-export-tool-bar>
+<hcs-create-button [queryParams]="queryParams" *ngIf="permission.hasPermission('Create')"></hcs-create-button>

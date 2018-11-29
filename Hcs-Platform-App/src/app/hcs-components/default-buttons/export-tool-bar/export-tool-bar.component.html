@@ -1,0 +1,7 @@
+<button mat-fab color="primary" *ngIf="showExportBtn" (click)="export()" [matTooltip]="'common.export'|translate">
+  <mat-icon>get_app</mat-icon>
+</button>
+<button mat-fab color="primary" *ngIf="grid.getSelectRowCount()>0" [matBadge]="grid.getSelectRowCount()" matBadgeColor="warn"
+  (click)="this.grid.clearSelected()" [matTooltip]="'common.clearSelected'|translate:{data:grid.getSelectRowCount()}">
+  <mat-icon>close</mat-icon>
+</button>

@@ -1,0 +1,40 @@
+<hcs-form-page [formGroup]="formGroup" #fp [modelPreprocess]="modelPreprocess()" [dataSource]="datasource" [fieldI18nPrefix]="'models.PlatformModule.Test.Customer'">
+  <hcs-form-row>
+    <mat-form-field>
+      <mat-label translate>models.PlatformModule.Test.Customer.Name</mat-label>
+      <input matInput formControlName="Name" required>
+      <mat-error *ngIf="formGroup.get('Name')?.invalid">{{formGroup.get('Name').errors|errorMessage}}</mat-error>
+    </mat-form-field>
+  </hcs-form-row>
+
+  <hcs-fieldset legend="訂購" formArrayName="Orders">
+    <button mat-raised-button [matTooltip]="'common.create'|translate" color="primary" (click)="addItem()" *ngIf="!fp.isReadonly">
+      <mat-icon>add</mat-icon>
+    </button>
+    <ng-container *ngFor="let group of array.controls;let i=index;">
+      <hcs-form-row [formGroupName]="i" [noMargin]="true">
+        <ng-container>
+          <mat-form-field>
+            <mat-label translate>models.PlatformModule.Test.Order.Item
+            </mat-label>
+            <input matInput formControlName="Item">
+            <mat-error *ngIf="group.get('Item')?.invalid"></mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>models.PlatformModule.Test.Order.Quantity
+            </mat-label>
+            <input matInput type="number" formControlName="Quantity">
+            <mat-error *ngIf="group.get('Quantity')?.invalid"></mat-error>
+          </mat-form-field>
+
+          <hcs-form-field style="max-width:30px" *ngIf="array.enabled">
+            <button mat-icon-button color="warn" (click)="array.removeAt(i);array.markAsTouched()" [matTooltip]="'common.delete'|translate">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </hcs-form-field>
+        </ng-container>
+      </hcs-form-row>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </hcs-fieldset>
+</hcs-form-page>

@@ -1,0 +1,49 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    &.no-wrap {
+        flex-wrap: nowrap;
+    }
+    /deep/ {
+        > {
+            mat-form-field,
+            hcs-form-field,
+            hcs-form-row,
+            hcs-data-grid,
+            hcs-form-column,
+            hcs-fieldset,
+            div {
+                flex: 1 0;
+            }
+            mat-form-field,
+            hcs-form-field,
+            div {
+                margin: 5px;
+            }
+        }
+        .mat-checkbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &.no-margin {
+        /deep/ {
+            .mat-form-field {
+                margin-bottom: -1.10em;
+                .mat-form-field-label {
+                    display: flex;
+                    mat-label {
+                        display: flex;
+                        hcs-error {
+                            margin-left: 2px;
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

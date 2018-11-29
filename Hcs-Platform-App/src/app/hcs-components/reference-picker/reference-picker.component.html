@@ -1,0 +1,6 @@
+<button mat-icon-button color="primary" *ngIf="!disabled" (click)="showSearchDialog()">
+  <mat-icon>search</mat-icon>
+</button>
+<button mat-icon-button color="warn" *ngIf="!disabled && referenceId" (click)="clear()">
+  <mat-icon>close</mat-icon>
+</button>

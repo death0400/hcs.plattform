@@ -1,0 +1,35 @@
+{
+    "models": {
+        "BaseModels": {
+            "PlatformUser": {
+                "Name": "姓名",
+                "Account": "帳號",
+                "Email": "Email",
+                "Status": "狀態",
+                "Password": "密碼",
+                "ConfirmPassword": "確認密碼"
+            },
+            "PlatformGroup": {
+                "Name": "名稱",
+                "IsEnabled": "是否啟用"
+            }
+        }
+    },
+    "functions": {
+        "Basic": {
+            "Category": "使用者&群組",
+            "PlatformUser": "使用者",
+            "PlatformGroup": "權限群組"
+        }
+    },
+    "component": {
+        "platform-group": {
+            "permission": "權限設定",
+            "savePermission": "儲存權限設定"
+        },
+        "platform-user-form": {
+            "group": "群組設定",
+            "saveGroup": "儲存群組設定"
+        }
+    }
+}

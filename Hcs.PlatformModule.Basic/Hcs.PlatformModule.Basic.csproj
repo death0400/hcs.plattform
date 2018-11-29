@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hcs.Platform.Abstractions\Hcs.Platform.Abstractions.csproj" />
+    <ProjectReference Include="..\Hcs.Platform.Core\Hcs.Platform.Core.csproj" />
+    <ProjectReference Include="..\Hcs.Extensions.EntityFrameworkCore\Hcs.Extensions.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.8.1</Version>
+    <Authors>HsinYu Chen</Authors>
+    <Company>Hardcore Software</Company>
+    <Product>Hardcore Software Platform Basic</Product>
+  </PropertyGroup>
+
+</Project>

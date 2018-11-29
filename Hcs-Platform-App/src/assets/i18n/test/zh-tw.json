@@ -1,0 +1,24 @@
+{
+    "menu": {
+        "Test": {
+            "GroupName": "測試",
+            "Customer": "客戶管理"
+        }
+    },
+    "functions": {
+        "PlatformModule": {
+            "Customer": "客戶管理"
+        }
+    },
+    "models": {
+        "PlatformModule.Test": {
+            "Customer": {
+                "Name": "名稱"
+            },
+            "Order": {
+                "Item": "品項",
+                "Quantity": "數量"
+            }
+        }
+    }
+}

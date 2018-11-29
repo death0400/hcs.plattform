@@ -1,0 +1,121 @@
+{
+    "app-title": "盈發鋁業",
+    "common": {
+        "error": "錯誤",
+        "export": "匯出",
+        "confirmExportTitle": "確認匯出",
+        "confirmExport": "是否確認要匯出?",
+        "clearSelected": "清除已選{{data}}筆資料",
+        "pleaseSelect": "請選擇",
+        "true": "是",
+        "false": "否",
+        "all": "全部",
+        "delete": "刪除",
+        "create": "新建",
+        "edit": "編輯",
+        "copy": "複製",
+        "search": "查詢",
+        "back": "返回列表",
+        "cancel": "取消編輯",
+        "save": "存檔",
+        "reset": "復原修改",
+        "deleteTitle": "確認刪除",
+        "deleteMessage": "是否真的要刪除這筆資料，這個操作無法復原",
+        "exportLimit": "避免連線過久，匯出最多{{limit}}筆，請先查詢或選取要匯出的資料"
+    },
+    "dialog": {
+        "alert": {
+            "title": "系統訊息"
+        },
+        "confirm": {
+            "yes": "是",
+            "no": "否"
+        },
+        "reference": {
+            "cancel": "取消"
+        },
+        "changePassword": {
+            "OldPassword": "舊密碼",
+            "Password": "新密碼",
+            "ConfirmPassword": "確認新密碼"
+        }
+    },
+    "menu": {
+        "UserAndGroup": "使用者&群組",
+        "PlatformUser": "使用者",
+        "PlatformGroup": "權限群組"
+    },
+    "component": {
+        "login": {
+            "login": "登入",
+            "account": "帳號",
+            "password": "密碼",
+            "error": {
+                "Login.UserNotActive": "使用者未啟用",
+                "Login.UserNotExists": "帳號或密碼錯誤"
+            }
+        },
+        "app": {
+            "logout": "登出",
+            "useDarkTheme": "使用深色介面",
+            "hello": "你好,",
+            "changePassword": "變更密碼"
+        },
+        "data-change-log": {
+            "lastUpdatedBy": "最後修改人",
+            "createdBy": "建立人",
+            "createdTime": "建立時間",
+            "lastUpdatedTime": "修改時間"
+        }
+    },
+    "control": {
+        "data-grid": {
+            "info": "全部共{{total}}筆，目前顯示第{{from}}到{{to}}筆",
+            "page": "第{{page}}頁，共{{totalPage}}頁",
+            "pagesize": "每頁顯示"
+        }
+    },
+    "enums": {
+        "UserStatus": {
+            "1": "啟用",
+            "-1": "停用"
+        },
+        "PermissionStatus": {
+            "1": "授權",
+            "0": "未設定",
+            "-1": "禁止"
+        }
+    },
+    "models": {
+        "common": {
+            "CreatedBy": "建立者"
+        },
+        "PlatformModel": {
+            "PlatformFunction": {
+                "Code": "功能",
+                "Permissions": "權限"
+            }
+        }
+    },
+    "errors": {
+        "required": "必填",
+        "minlength": "至少要有{{requiredLength}}個字",
+        "email": "必須是Email格式",
+        "sameAs": "必須跟{{control}}相同",
+        "duplicate": "重複",
+        "matDatepickerParse": "必須是日期格式",
+        "min": "不能低於{{min}}",
+        "max": "不能大於{{max}}",
+        "pattern": "格式錯誤",
+        "fileSize": "檔案{{name}}的大小{{size}}KB超過最大上限{{max}}KB",
+        "maxFileCount": "檔案數量超過限制，最多{{max}}個",
+        "OldPasswordError": "舊密碼錯誤"
+    },
+    "permissions": {
+        "View": "檢視",
+        "Create": "新建",
+        "Modify": "修改",
+        "Delete": "刪除",
+        "Admin": "管理者"
+    }
+}

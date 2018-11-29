@@ -1,0 +1,53 @@
+mat-sidenav-content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .page-container {
+        flex: 1 1 auto;
+        display: flex;
+        height: 0;
+        overflow: auto;
+        position: relative;
+        /deep/ router-outlet+* {
+            display: flex;
+            flex: 1 1 auto;
+        }
+    }
+}
+
+mat-sidenav {
+    display: flex;
+    flex-direction: column;
+    mat-toolbar {
+        min-height: 64px;
+    }
+    mat-nav-list {
+        flex: 1 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.mat-nav-list {
+    padding-top: 0;
+}
+
+.loading {
+    z-index: 1001;
+    opacity: 0.5;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-list-item {
+    mat-slide-toggle {
+        width: 100%;
+        height: 100%;
+    }
+}

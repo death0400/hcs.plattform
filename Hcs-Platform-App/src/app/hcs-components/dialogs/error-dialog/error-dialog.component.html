@@ -1,0 +1,14 @@
+<h2 mat-dialog-title translate>common.error</h2>
+<mat-dialog-content>
+  <iframe *ngIf="type==='text/html'" [src]="value">
+
+  </iframe>
+  <ng-container *ngIf="type==='text/plain'">
+    {{value}}
+  </ng-container>
+  <div *ngIf="type==='application/json'">
+    <div class="error-item" *ngFor="let err of value">
+      <div class="field">{{err.message|errorMessage}}</div>
+    </div>
+  </div>
+</mat-dialog-content>

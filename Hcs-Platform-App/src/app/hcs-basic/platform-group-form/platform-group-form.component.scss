@@ -1,0 +1,31 @@
+:host /deep/ {
+    .permission-cell {
+        flex: 1 0;
+        .mat-divider {
+            width: 100%;
+        }
+        .permission-setting {
+            width: 100%;
+            min-height: 23px;
+            label {
+                margin-left: 20px;
+            }
+            mat-radio-group {
+                mat-radio-button {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.permission-grid-header {
+    align-items: center;
+    h4 {
+        margin: 10px;
+    }
+    .buttons {
+        margin: 10px;
+        align-items: center;
+    }
+}

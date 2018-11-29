@@ -1,0 +1,36 @@
+<hcs-list-page>
+  <hcs-data-grid [data]="data" #grid [autoLoad]="true">
+    <ng-container grid-head [formGroup]="filterForm">
+      <!--grid filters-->
+      <mat-form-field>
+        <mat-label translate>models.BaseModels.PlatformGroup.Name</mat-label>
+        <input matInput formControlName="Name" hcsDataGridQuery operator="contains" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label translate>models.BaseModels.PlatformGroup.IsEnabled</mat-label>
+        <mat-select [placeholder]="'common.all'|translate" formControlName="IsEnabled" hcsDataGridQuery operator="=">
+          <mat-option [value]="null">{{'common.all'|translate}}</mat-option>
+          <mat-option [value]="true">{{'common.true'|translate}}</mat-option>
+          <mat-option [value]="false">{{'common.false'|translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="buttons">
+        <hcs-default-button-search-bar [grid]="grid" [filterForm]="filterForm"></hcs-default-button-search-bar>
+      </div>
+    </ng-container>
+    <!--grid columns-->
+    <ng-container *hcsDataGridColum="let i=index;width:30;align:'center';name:'#'">
+      <span [textContent]="pager.getSerialNumber(i)"></span>
+    </ng-container>
+    <ng-container *hcsDataGridColum="let value;let entity=entity;export:true,field:'Name';name:'models.BaseModels.PlatformGroup.Name'|translate">
+      <a [routerLink]="[entity.Id]" queryParamsHandling="merge">{{value}}</a>
+    </ng-container>
+    <ng-container *hcsDataGridColum="let value;field:'IsEnabled';export:true,name:'models.BaseModels.PlatformGroup.IsEnabled'|translate;align:'center';">
+      {{'common.'+value|translate}}
+    </ng-container>
+    <ng-container *hcsDataGridColum="let value;field:'Id';name:'';sortable:false">
+      <hcs-default-button-list [data]="data" [key]="value"></hcs-default-button-list>
+    </ng-container>
+    <hcs-pager #pager grid-foot></hcs-pager>
+  </hcs-data-grid>
+</hcs-list-page>

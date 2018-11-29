@@ -1,0 +1,13 @@
+:host {
+    margin-top: auto;
+    display: flex;
+    flex-shrink: 0;
+    >div {
+        flex: 1 0;
+        div {
+            flex: 1 0;
+            align-items: center;
+            padding: 0 2px;
+        }
+    }
+}
